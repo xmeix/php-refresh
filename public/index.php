@@ -2,20 +2,24 @@
 class App{
 
     // this function works like a react-router-dom
-    protected $controller = '_404';
+    protected $controller = "_404";
     function __construct()
     {
-        $arr = $this -> getURL();
+        $arr = $this->getURL();
+        
         // ucfirst to change the first letter to a capital letter 
-        $filename = '../app/controllers/'.ucfirst($arr[0]).".php"; 
-
+        $filename = "../app/controllers/".ucfirst($arr[0]).".php"; 
+        
         if(file_exists($filename)){
             require $filename;
             $this->controller = $arr[0];
+            
         }else {
-            require '../app/controllers/'.$this->controller.".php"; 
- 
+            require "../app/controllers/".$this->controller.".php"; 
+           
         }
+
+        $mycontroller = new $this->controller();
     }
 
 
@@ -28,5 +32,5 @@ class App{
 
 
 }
-$app = new App("dunia");
+$app = new App();
 ?>
