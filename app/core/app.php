@@ -22,11 +22,11 @@ class App{
         }
          
         $mycontroller = new $this->controller();
-        $mymethod = strtolower($arr[1]) ?? strtolower($this->method); 
+        $mymethod = $arr[1] ?? strtolower($this->method); 
         
         if(!empty($arr[1])){
         
-            if(method_exists($mycontroller,$mymethod)){
+            if(method_exists($mycontroller,strtolower($mymethod))){
                 $this->method = strtolower($mymethod);
                 unset($arr[1]);
             }
