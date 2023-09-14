@@ -9,14 +9,15 @@ class Home{
         echo "home view page";
         
     }
-    public function edit($id)
+    
+    public function edit()
     {   
-        echo "home editing".$id;
-        
+        echo "home editing";
     }
-    public function delete($id)
+
+    public function delete()
     {   
-        echo "home deleting".$id[0];
+        echo "home deleting";
         
     }
     
