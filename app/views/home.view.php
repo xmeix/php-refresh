@@ -1,2 +1,9 @@
-<h1>HELLO TO HOME PAGE</h1>
-<h5><?= $title?></h5>
+<?php
+$this->view('./includes/header');
+$this->view('./includes/nav');
+?>
+
+   
+    <div>MAIN</div>
+    <?php
+    $this->view('./includes/footer');
