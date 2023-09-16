@@ -10,11 +10,16 @@ class Signup extends Controller{
         $data['errors'] = [];
 
         $user = new User();
-        if($user->validate($_POST)){
-            $_POST['date'] = date("Y-m-d H:i:s");
-            $user->insert($_POST);
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            
+            if($user->validate($_POST)){
+                
+                $_POST['date'] = date("Y-m-d H:i:s");
+                $user->insert($_POST);
+            
+            }
+            
         }
-         
         // show($user->errors);
         $data['errors'] = $user->errors;
         $data['title'] ="Signup";
