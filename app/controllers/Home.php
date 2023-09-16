@@ -7,7 +7,6 @@ class Home extends Controller{
     {   
         // $db = new Database();
         // $db->create_tables();
-        
         $data['title'] ="Home";
         $this->view("home",$data);
         
