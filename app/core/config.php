@@ -17,7 +17,7 @@ if($_SERVER['SERVER_NAME'] == 'localhost'){
     define("DBUSER", "root"); 
     define("DBPASSWORD", ""); 
     define("DBDRIVER", "mysql"); 
-    define("ROOT", "http://localhost/udemy/public"); 
+    define("ROOT", "http://localhost/php-projects/website/public"); 
 
 }else {
     //database config for live server
