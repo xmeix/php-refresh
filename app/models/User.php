@@ -1,6 +1,6 @@
 <?php
 
-class User{
+class User extends Model{
     
     protected $table = "users";
     public $errors = [];
@@ -18,29 +18,38 @@ class User{
         }else if(empty($data['password'])){
             $this->errors['password'] = "password is required";
         }
+
+
+        // check if email exists
+
+        if(!empty($data)){
+            
+            if(!filter_var($data['email'],FILTER_VALIDATE_EMAIL)){
+            
+                $this->errors['email'] = "Email is not valid";
+            
+            }else if($this-> where(['email'=>$data['email']])){
+            
+                $this->errors['email'] = "Email already exists";
+            
+            }
+        }
+
+     
+
+
+
+
+
+
+
+
         if(empty($this->errors)){
             return true;
         }
-
+        // show($this->errors);
         return false;
     }
     
-    public function insert($data){
-        // remove unwanted columns
-        if(!empty($this->allowedColumns)){
-              foreach ($data as $key => $value) {
-                if(!in_array($key,$this->allowedColumns)){
-                    unset($data[$key]);
-                }
-        }
-        }
-      
-
-        $keys= array_keys($data); 
-        $query = "insert into users";
-        $query.="(".implode(",",$keys).") values (:".implode(',:',$keys).")";
-  
-        $db = new Database();
-        $db->query($query,$data);
-    }
+   
 }
